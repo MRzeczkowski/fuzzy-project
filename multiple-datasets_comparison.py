@@ -46,7 +46,9 @@ data_sets = [
 
 # Maybe add more metrics? https://scikit-learn.org/stable/modules/model_evaluation.html#classification-metrics
 for name, data in data_sets:
+    print("~"*3)
     print("Dataset name: " + name)
+    print()
 
     X_train, X_test, y_train, y_test = train_test_split(
         data[0], data[1], test_size=0.2, random_state=42)
@@ -60,10 +62,10 @@ for name, data in data_sets:
     p_end = time.time()
 
     print("Fuzzy decision tree statistics:")
-    print("Training time: ", t_end - t_start, "seconds")
-    print("Prediction time: ", p_end - p_start, "seconds")
-    print("Confusion matrix: \n", confusion_matrix(y_test, pred_fuzz))
+    print("Training time: ", (t_end - t_start) * 1000, "miliseconds")
+    print("Prediction time: ", (p_end - p_start) * 1000, "miliseconds")
     print("Accuracy: ", accuracy_score(y_test, pred_fuzz))
+    print("Confusion matrix: \n", confusion_matrix(y_test, pred_fuzz))
     print()
 
     t_start = time.time()
@@ -75,9 +77,9 @@ for name, data in data_sets:
     p_end = time.time()
 
     print("Decision tree statistics:")
-    print("Training time: ", t_end - t_start, "seconds")
-    print("Prediction time: ", p_end - p_start, "seconds")
-    print("Confusion matrix: \n", confusion_matrix(y_test, pred_sk))
+    print("Training time: ", (t_end - t_start) * 1000, "miliseconds")
+    print("Prediction time: ", (p_end - p_start) * 1000, "miliseconds")
     print("Accuracy: ", accuracy_score(y_test, pred_sk))
+    print("Confusion matrix: \n", confusion_matrix(y_test, pred_sk))
 
-    print("~"*100)
+    print("~"*3)
