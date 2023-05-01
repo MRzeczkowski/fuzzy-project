@@ -8,6 +8,8 @@ from sklearn.tree import DecisionTreeClassifier
 
 from fuzzytree import FuzzyDecisionTreeClassifier
 
+import time
+
 iris = load_iris()
 
 X_iris = iris.data[:, ]
@@ -49,20 +51,33 @@ for name, data in data_sets:
     X_train, X_test, y_train, y_test = train_test_split(
         data[0], data[1], test_size=0.2, random_state=42)
 
+    t_start = time.time()
     clf_fuzz = FuzzyDecisionTreeClassifier().fit(X_train, y_train)
-    clf_sk = DecisionTreeClassifier().fit(X_train, y_train)
+    t_end = time.time()
 
+    p_start = time.time()
     pred_fuzz = clf_fuzz.predict(X_test)
+    p_end = time.time()
 
     print("Fuzzy decision tree statistics:")
-    print("Confusion matrix: \n" + str(confusion_matrix(y_test, pred_fuzz)))
-    print("Accuracy: " + str(accuracy_score(y_test, pred_fuzz)))
+    print("Training time: ", t_end - t_start, "seconds")
+    print("Prediction time: ", p_end - p_start, "seconds")
+    print("Confusion matrix: \n", confusion_matrix(y_test, pred_fuzz))
+    print("Accuracy: ", accuracy_score(y_test, pred_fuzz))
     print()
 
+    t_start = time.time()
+    clf_sk = DecisionTreeClassifier().fit(X_train, y_train)
+    t_end = time.time()
+
+    p_start = time.time()
     pred_sk = clf_sk.predict(X_test)
+    p_end = time.time()
 
     print("Decision tree statistics:")
-    print("Confusion matrix: \n" + str(confusion_matrix(y_test, pred_sk)))
-    print("Accuracy: " + str(accuracy_score(y_test, pred_sk)))
+    print("Training time: ", t_end - t_start, "seconds")
+    print("Prediction time: ", p_end - p_start, "seconds")
+    print("Confusion matrix: \n", confusion_matrix(y_test, pred_sk))
+    print("Accuracy: ", accuracy_score(y_test, pred_sk))
 
     print("~"*100)
