@@ -15,84 +15,143 @@ Celem tego projektu było porównanie wybranych parametrów klasyfikacji za pomo
 Poniższy Raport zawiera dla każdego zbioru danych informacje o tym jak długo trwało budowanie drzew, ich użycie, dokładność klasyfikacji na zbiorze testującym oraz macież błędów która może zostać użyta do dalszej analizy.
 
 ~~~
-Zbór danych: blobs
-
-Rozmyte drzewo decyzyjne:
-Czas budowy: 2495.400905609131 milisekund
-Czas użycia: 3.3380985260009766 milisekund
-Dokładnść: 0.8166666666666667
-Macież błędów:
- [[14  2  1]
- [ 1 23  2]
- [ 3  2 12]]
+Zbór danych: animals
 
 Klasyczne drzewo decyzyjne:
-Czas budowy: 2.443075180053711 milisekund
-Czas użycia: 0.31304359436035156 milisekund
-Dokładność: 0.7333333333333333
+Czas budowy: 1.9650459289550781 milisekund
+Czas użycia: 0.1270771026611328 milisekund
+Dokładność: 0.9523809523809523
+Precyzja: 0.7142857142857143
+Czułość: 0.7142857142857143
 Macież błędów:
- [[11  3  3]
- [ 2 22  2]
- [ 6  0 11]]
-~~~
-~~~
-Zbór danych: circles
+ [[12  0  0  0  0  0  0]
+ [ 0  2  0  0  0  0  0]
+ [ 0  0  0  0  1  0  0]
+ [ 0  0  0  2  0  0  0]
+ [ 0  0  0  0  0  0  0]
+ [ 0  0  0  0  0  3  0]
+ [ 0  0  0  0  0  0  1]]
 
 Rozmyte drzewo decyzyjne:
-Czas budowy: 2695.902109146118 milisekund
-Czas użycia: 3.0939579010009766 milisekund
-Dokładnść: 0.8833333333333333
+Czas budowy: 14.976978302001953 milisekund
+Czas użycia: 0.25200843811035156 milisekund
+Dokładnść: 0.9523809523809523
+Precyzja: 0.7142857142857143
+Czułość: 0.7142857142857143
 Macież błędów:
- [[24  2]
- [ 5 29]]
+ [[12  0  0  0  0  0  0]
+ [ 0  2  0  0  0  0  0]
+ [ 0  0  0  0  1  0  0]
+ [ 0  0  0  2  0  0  0]
+ [ 0  0  0  0  0  0  0]
+ [ 0  0  0  0  0  3  0]
+ [ 0  0  0  0  0  0  1]]
+~~~
+~~~
+Zbór danych: fetal_health
 
 Klasyczne drzewo decyzyjne:
-Czas budowy: 0.4711151123046875 milisekund
-Czas użycia: 0.0667572021484375 milisekund
-Dokładność: 0.8
+Czas budowy: 8.166313171386719 milisekund
+Czas użycia: 0.14472007751464844 milisekund
+Dokładność: 0.9225352112676056
+Precyzja: 0.8712892789079466
+Czułość: 0.8954924752338544
 Macież błędów:
- [[22  4]
- [ 8 26]]
-~~~
-~~~
-Zbór danych: iris
+ [[314  17   2]
+ [ 11  52   1]
+ [  2   0  27]]
 
 Rozmyte drzewo decyzyjne:
-Czas budowy: 479.2449474334717 milisekund
-Czas użycia: 1.3551712036132812 milisekund
-Dokładnść: 1.0
+Czas budowy: 119508.06498527527 milisekund
+Czas użycia: 29.098033905029297 milisekund
+Dokładnść: 0.9248826291079812
+Precyzja: 0.9214287001495739
+Czułość: 0.8313550619585102
 Macież błędów:
- [[10  0  0]
- [ 0  9  0]
- [ 0  0 11]]
+ [[326   7   0]
+ [ 20  44   0]
+ [  3   2  24]]
+~~~
+~~~
+Zbór danych: glass
 
 Klasyczne drzewo decyzyjne:
-Czas budowy: 0.32901763916015625 milisekund
+Czas budowy: 0.7660388946533203 milisekund
+Czas użycia: 0.09512901306152344 milisekund
+Dokładność: 0.7906976744186046
+Precyzja: 0.8088624338624338
+Czułość: 0.8003246753246754
+Macież błędów:
+ [[10  0  0  0  0  1]
+ [ 4  9  1  0  0  0]
+ [ 0  0  3  0  0  0]
+ [ 0  1  0  1  2  0]
+ [ 0  0  0  0  3  0]
+ [ 0  0  0  0  0  8]]
+
+Rozmyte drzewo decyzyjne:
+Czas budowy: 3809.9892139434814 milisekund
+Czas użycia: 2.285003662109375 milisekund
+Dokładnść: 0.7674418604651163
+Precyzja: 0.6648809523809524
+Czułość: 0.6644119769119768
+Macież błędów:
+ [[10  1  0  0  0  0]
+ [ 3 11  0  0  0  0]
+ [ 1  2  0  0  0  0]
+ [ 0  1  0  3  0  0]
+ [ 0  0  0  0  2  1]
+ [ 0  0  0  0  1  7]]
+~~~
+~~~
+Zbór danych: heart_attack
+
+Klasyczne drzewo decyzyjne:
+Czas budowy: 0.6051063537597656 milisekund
 Czas użycia: 0.06198883056640625 milisekund
-Dokładność: 1.0
+Dokładność: 0.819672131147541
+Precyzja: 0.826797385620915
+Czułość: 0.8232758620689655
 Macież błędów:
- [[10  0  0]
- [ 0  9  0]
- [ 0  0 11]]
-~~~
-~~~
-Zbór danych: moons
+ [[26  3]
+ [ 8 24]]
 
 Rozmyte drzewo decyzyjne:
-Czas budowy: 2392.4028873443604 milisekund
-Czas użycia: 2.9571056365966797 milisekund
-Dokładnść: 0.8333333333333334
+Czas budowy: 2248.9311695098877 milisekund
+Czas użycia: 2.8548240661621094 milisekund
+Dokładnść: 0.819672131147541
+Precyzja: 0.8193548387096774
+Czułość: 0.8200431034482758
 Macież błędów:
- [[20  6]
- [ 4 30]]
+ [[24  5]
+ [ 6 26]]
+~~~
+~~~
+Zbór danych: mobile_price_train
 
 Klasyczne drzewo decyzyjne:
-Czas budowy: 0.41604042053222656 milisekund
-Czas użycia: 0.06389617919921875 milisekund
-Dokładność: 0.7333333333333333
+Czas budowy: 7.922887802124023 milisekund
+Czas użycia: 0.1800060272216797 milisekund
+Dokładność: 0.83
+Precyzja: 0.8290811191626408
+Czułość: 0.8257286192068801
 Macież błędów:
- [[15 11]
- [ 5 29]]
+ [[ 90  15   0   0]
+ [  6  79   6   0]
+ [  0  14  63  15]
+ [  0   0  12 100]]
+
+Rozmyte drzewo decyzyjne:
+Czas budowy: 242738.862991333 milisekund
+Czas użycia: 39.1690731048584 milisekund
+Dokładnść: 0.9125
+Precyzja: 0.9110206137010463
+Czułość: 0.9124049410734194
+Macież błędów:
+ [[ 98   7   0   0]
+ [  3  85   3   0]
+ [  0   8  81   3]
+ [  0   0  11 101]]
 ~~~
 
 ## Podsumowanie
