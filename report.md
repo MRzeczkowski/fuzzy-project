@@ -1,19 +1,3 @@
-# Porównanie rozmytego i klasycznego drzewa decyzyjnego
-
-## Wstęp
-
-Celem tego projektu było porównanie wybranych parametrów klasyfikacji za pomocą rozmytego i klasycznego drzewa decyzyjnego. W tym celu wykorzystano dziesięć zbiorów danych pobranych ze strony [Kaggle](https://www.kaggle.com/), za pomocą bibliotek [fuzzy-tree](https://balins.github.io/fuzzytree/index.html) i [Sklearn](https://scikit-learn.org/stable/) zbudowano odpowiednio rozmyte i klasyczne drzewo decyzyjne oraz za pomocą skryptu w języku Python wygenerowano raport z wybranymi statystykami.
-
-
-## Opis zbiorów danych
-
-
-## Algorytm budowania rozmytego drzewa decyzyjnego
-
-
-## Raport
-Poniższy Raport zawiera dla każdego zbioru danych informacje o tym jak długo trwało budowanie drzew, ich użycie, dokładność klasyfikacji na zbiorze testującym oraz macież błędów która może zostać użyta do dalszej analizy.
-
 ## Zbiór danych: animals
 
 | Metryka | Klasyczne drzewo decyzyjne | Rozmyte drzewo decyzyjne 
@@ -79,6 +63,3 @@ Poniższy Raport zawiera dla każdego zbioru danych informacje o tym jak długo 
 
 ---
 
-
-
-## Podsumowanie
