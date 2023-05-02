@@ -1,5 +1,5 @@
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import confusion_matrix, accuracy_score, recall_score, precision_score, ConfusionMatrixDisplay
+from sklearn.metrics import confusion_matrix, accuracy_score, recall_score, precision_score, f1_score, ConfusionMatrixDisplay
 from sklearn.tree import DecisionTreeClassifier
 
 from fuzzytree import FuzzyDecisionTreeClassifier
@@ -38,6 +38,18 @@ def make_bigger_bold(a, b):
     return a, b
 
 
+def calc_metrics(y, pred):
+    return (
+        accuracy_score(y, pred),
+        precision_score(y, pred, average='macro', zero_division=0),
+        precision_score(y, pred, average='micro', zero_division=0),
+        recall_score(y, pred, average='macro', zero_division=0),
+        recall_score(y, pred, average='micro', zero_division=0),
+        f1_score(y, pred, average='macro', zero_division=0),
+        f1_score(y, pred, average='micro', zero_division=0)
+    )
+
+
 for name, data in data_sets:
     print("## Zbiór danych:", name)
     print()
@@ -56,11 +68,13 @@ for name, data in data_sets:
     p_end = time.time()
     p_time_ms_sk = (p_end - p_start) * 1000
 
-    acc_sk = accuracy_score(y_test, pred_sk)
-    prec_sk = precision_score(
-        y_test, pred_sk, average='macro', zero_division=0)  # TODO: micro?
-    rec_sk = recall_score(
-        y_test, pred_sk, average='macro', zero_division=0)
+    (acc_sk,
+     prec_macro_sk,
+     prec_micro_sk,
+     rec_macro_sk,
+     rec_micro_sk,
+     f1_macro_sk,
+     f1_micro_sk) = calc_metrics(y_test, pred_sk)
 
     cm_sk = confusion_matrix(y_test, pred_sk)
     disp_sk = ConfusionMatrixDisplay(confusion_matrix=cm_sk)
@@ -82,11 +96,13 @@ for name, data in data_sets:
     p_end = time.time()
     p_time_ms_fuzz = (p_end - p_start) * 1000
 
-    acc_fuzz = accuracy_score(y_test, pred_fuzz)
-    prec_fuzz = recall_score(
-        y_test, pred_fuzz, average='macro', zero_division=0)
-    rec_fuzz = recall_score(
-        y_test, pred_fuzz, average='macro', zero_division=0)
+    (acc_fuzz,
+     prec_macro_fuzz,
+     prec_micro_fuzz,
+     rec_macro_fuzz,
+     rec_micro_fuzz,
+     f1_macro_fuzz,
+     f1_micro_fuzz) = calc_metrics(y_test, pred_fuzz)
 
     cm_fuzz = confusion_matrix(y_test, pred_fuzz)
     disp_fuzz = ConfusionMatrixDisplay(confusion_matrix=cm_fuzz)
@@ -100,19 +116,35 @@ for name, data in data_sets:
     acc_sk, acc_fuzz = make_bigger_bold(
         acc_sk, acc_fuzz)
 
-    prec_sk, prec_fuzz = make_bigger_bold(
-        prec_sk, prec_fuzz)
+    prec_macro_sk, prec_macro_fuzz = make_bigger_bold(
+        prec_macro_sk, prec_macro_fuzz)
 
-    rec_sk, rec_fuzz = make_bigger_bold(
-        rec_sk, rec_fuzz)
+    prec_micro_sk, prec_micro_fuzz = make_bigger_bold(
+        prec_micro_sk, prec_micro_fuzz)
+
+    rec_macro_sk, rec_macro_fuzz = make_bigger_bold(
+        rec_macro_sk, rec_macro_fuzz)
+
+    rec_micro_sk, rec_micro_fuzz = make_bigger_bold(
+        rec_micro_sk, rec_micro_fuzz)
+
+    f1_macro_sk, f1_macro_fuzz = make_bigger_bold(
+        f1_macro_sk, f1_macro_fuzz)
+
+    f1_micro_sk, f1_micro_fuzz = make_bigger_bold(
+        f1_micro_sk, f1_micro_fuzz)
 
     print("| Metryka | Klasyczne drzewo decyzyjne | Rozmyte drzewo decyzyjne ")
-    print("| ------- | -------------------------- | ------------------------ ")
+    print("| --- | --- | --- ")
     print("| Czas budowy [ms] | ", t_time_ms_sk, " | ", t_time_ms_fuzz)
     print("| Czas użycia [ms] | ", p_time_ms_sk, " | ", p_time_ms_fuzz)
     print("| Dokładność | ", acc_sk, " | ", acc_fuzz)
-    print("| Precyzja |", prec_sk, " | ", prec_fuzz)
-    print("| Czułość |", rec_sk, " | ", rec_fuzz)
+    print("| Precyzja makro |", prec_macro_sk, " | ", prec_macro_fuzz)
+    print("| Precyzja mikro |", prec_micro_sk, " | ", prec_micro_fuzz)
+    print("| Czułość makro |", rec_macro_sk, " | ", rec_macro_fuzz)
+    print("| Czułość mikro |", rec_micro_sk, " | ", rec_micro_fuzz)
+    print("| F1 makro |", f1_macro_sk, " | ", f1_macro_fuzz)
+    print("| F1 mikro |", f1_micro_sk, " | ", f1_micro_fuzz)
     print(
         "| Macierz błędów |", "![](", cm_sk_plot_path, ")", " | ",  "![](", cm_fuzz_plot_path, ")")
     print("\n---\n")
