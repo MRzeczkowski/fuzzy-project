@@ -15,84 +15,84 @@ Celem tego projektu było porównanie wybranych parametrów klasyfikacji za pomo
 Poniższy Raport zawiera dla każdego zbioru danych informacje o tym jak długo trwało budowanie drzew, ich użycie, dokładność klasyfikacji na zbiorze testującym oraz macież błędów która może zostać użyta do dalszej analizy.
 
 ~~~
-Dataset name: blobs
+Zbór danych: blobs
 
-Fuzzy decision tree statistics:
-Training time:  2486.3979816436768 miliseconds
-Prediction time:  3.192901611328125 miliseconds
-Accuracy:  0.8166666666666667
-Confusion matrix: 
+Rozmyte drzewo decyzyjne:
+Czas budowy: 2495.400905609131 milisekund
+Czas użycia: 3.3380985260009766 milisekund
+Dokładnść: 0.8166666666666667
+Macież błędów:
  [[14  2  1]
  [ 1 23  2]
  [ 3  2 12]]
 
-Decision tree statistics:
-Training time:  2.5262832641601562 miliseconds
-Prediction time:  0.35881996154785156 miliseconds
-Accuracy:  0.7833333333333333
-Confusion matrix: 
- [[13  2  2]
- [ 1 23  2]
+Klasyczne drzewo decyzyjne:
+Czas budowy: 2.443075180053711 milisekund
+Czas użycia: 0.31304359436035156 milisekund
+Dokładność: 0.7333333333333333
+Macież błędów:
+ [[11  3  3]
+ [ 2 22  2]
  [ 6  0 11]]
 ~~~
 ~~~
-Dataset name: circles
+Zbór danych: circles
 
-Fuzzy decision tree statistics:
-Training time:  2712.785243988037 miliseconds
-Prediction time:  3.02886962890625 miliseconds
-Accuracy:  0.8833333333333333
-Confusion matrix: 
+Rozmyte drzewo decyzyjne:
+Czas budowy: 2695.902109146118 milisekund
+Czas użycia: 3.0939579010009766 milisekund
+Dokładnść: 0.8833333333333333
+Macież błędów:
  [[24  2]
  [ 5 29]]
 
-Decision tree statistics:
-Training time:  0.4420280456542969 miliseconds
-Prediction time:  0.06413459777832031 miliseconds
-Accuracy:  0.8
-Confusion matrix: 
+Klasyczne drzewo decyzyjne:
+Czas budowy: 0.4711151123046875 milisekund
+Czas użycia: 0.0667572021484375 milisekund
+Dokładność: 0.8
+Macież błędów:
  [[22  4]
  [ 8 26]]
 ~~~
 ~~~
-Dataset name: iris
+Zbór danych: iris
 
-Fuzzy decision tree statistics:
-Training time:  479.9990653991699 miliseconds
-Prediction time:  1.1649131774902344 miliseconds
-Accuracy:  1.0
-Confusion matrix: 
+Rozmyte drzewo decyzyjne:
+Czas budowy: 479.2449474334717 milisekund
+Czas użycia: 1.3551712036132812 milisekund
+Dokładnść: 1.0
+Macież błędów:
  [[10  0  0]
  [ 0  9  0]
  [ 0  0 11]]
 
-Decision tree statistics:
-Training time:  0.2989768981933594 miliseconds
-Prediction time:  0.06413459777832031 miliseconds
-Accuracy:  1.0
-Confusion matrix: 
+Klasyczne drzewo decyzyjne:
+Czas budowy: 0.32901763916015625 milisekund
+Czas użycia: 0.06198883056640625 milisekund
+Dokładność: 1.0
+Macież błędów:
  [[10  0  0]
  [ 0  9  0]
  [ 0  0 11]]
 ~~~
 ~~~
-Dataset name: moons
+Zbór danych: moons
 
-Fuzzy decision tree statistics:
-Training time:  2365.899085998535 miliseconds
-Prediction time:  2.9478073120117188 miliseconds
-Accuracy:  0.8333333333333334
-Confusion matrix: 
+Rozmyte drzewo decyzyjne:
+Czas budowy: 2392.4028873443604 milisekund
+Czas użycia: 2.9571056365966797 milisekund
+Dokładnść: 0.8333333333333334
+Macież błędów:
  [[20  6]
  [ 4 30]]
 
-Decision tree statistics:
-Training time:  0.4069805145263672 miliseconds
-Prediction time:  0.05984306335449219 miliseconds
-Accuracy:  0.7166666666666667
-Confusion matrix: 
+Klasyczne drzewo decyzyjne:
+Czas budowy: 0.41604042053222656 milisekund
+Czas użycia: 0.06389617919921875 milisekund
+Dokładność: 0.7333333333333333
+Macież błędów:
  [[15 11]
- [ 6 28]]
+ [ 5 29]]
 ~~~
 
 ## Podsumowanie
