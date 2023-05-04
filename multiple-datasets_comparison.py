@@ -1,6 +1,7 @@
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix, accuracy_score, recall_score, precision_score, f1_score, ConfusionMatrixDisplay
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.preprocessing import LabelEncoder
 
 from fuzzytree import FuzzyDecisionTreeClassifier
 
@@ -9,13 +10,26 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-def read_dataset(dataset_name, header='infer', index_col=None):
+def read_dataset(dataset_name, header='infer', index_col=None, delimiter = ',', labels_encoding=[], get_dummies=False):
     df = pd.read_csv('./datasets/' + dataset_name + '.csv',
-                     header=header, index_col=index_col)
-    X = df.iloc[:, :-1].to_numpy()
-    y = df.iloc[:, -1:].to_numpy().ravel()
+                     header=header, index_col=index_col, delimiter=delimiter)
+    
+    if labels_encoding:
+        for label in labels_encoding:
+            encoder = LabelEncoder()
+            df[label] = encoder.fit_transform(df[label])
+
+    X = df.iloc[:, :-1]
+    y = df.iloc[:, -1:]
+
+    if get_dummies:
+        X = pd.get_dummies(X, dtype=int)
+   
+    X = X.to_numpy()
+    y = y.to_numpy().ravel()
 
     return (dataset_name, (X, y))
+
 
 
 data_sets = [
@@ -23,7 +37,12 @@ data_sets = [
     read_dataset('fetal_health'),
     read_dataset('glass'),
     read_dataset('heart_attack'),
-    read_dataset('mobile_price_train'),
+    read_dataset('mobile_price'),
+    read_dataset('gender', labels_encoding=['gender']),
+    read_dataset('oil_spill'),
+    read_dataset('diabetes',delimiter = ';', labels_encoding=['gender']),
+    read_dataset('drugs', get_dummies=True, labels_encoding=['Drug']),
+    read_dataset('wine', labels_encoding=['quality']),
 ]
 
 max_depth = 64
