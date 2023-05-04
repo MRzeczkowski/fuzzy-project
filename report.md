@@ -66,7 +66,7 @@
 
 ---
 
-## Zbiór danych: mobile_price_train
+## Zbiór danych: mobile_price
 
 | Metryka | Klasyczne drzewo decyzyjne | Rozmyte drzewo decyzyjne 
 | --- | --- | --- 
@@ -83,3 +83,87 @@
 
 ---
 
+## Zbiór danych: gender
+
+| Metryka | Klasyczne drzewo decyzyjne | Rozmyte drzewo decyzyjne 
+| --- | --- | --- 
+| Czas budowy [ms] |  3.9985179901123047  |  16913.99574279785
+| Czas użycia [ms] |  0.0  |  67.99936294555664
+| Dokładność |  0.952047952047952  |  **0.9660339660339661**
+| Precyzja makro | 0.9520860781730347  |  **0.9661161776684608**
+| Precyzja mikro | 0.952047952047952  |  **0.9660339660339661**
+| Czułość makro | 0.9520355451939736  |  **0.9660156967321096**
+| Czułość mikro | 0.952047952047952  |  **0.9660339660339661**
+| F1 makro | 0.9520456069751846  |  **0.9660312200574896**
+| F1 mikro | 0.952047952047952  |  **0.9660339660339661**
+| Macierz błędów | ![]( ./images/gender_sk.png )  |  ![]( ./images/gender_fuzz.png )
+
+---
+
+## Zbiór danych: oil_spill
+
+| Metryka | Klasyczne drzewo decyzyjne | Rozmyte drzewo decyzyjne 
+| --- | --- | --- 
+| Czas budowy [ms] |  14.998674392700195  |  276526.24440193176
+| Czas użycia [ms] |  0.0  |  10.030984878540039
+| Dokładność |  **0.9787234042553191**  |  0.9680851063829787
+| Precyzja makro | **0.8097222222222222**  |  0.7391304347826086
+| Precyzja mikro | **0.9787234042553191**  |  0.9680851063829787
+| Czułość makro | **0.9084249084249084**  |  0.6611721611721612
+| Czułość mikro | **0.9787234042553191**  |  0.9680851063829787
+| F1 makro | **0.8516179952644041**  |  0.6918032786885246
+| F1 mikro | **0.9787234042553191**  |  0.9680851063829787
+| Macierz błędów | ![]( ./images/oil_spill_sk.png )  |  ![]( ./images/oil_spill_fuzz.png )
+
+---
+
+## Zbiór danych: diabetes
+
+| Metryka | Klasyczne drzewo decyzyjne | Rozmyte drzewo decyzyjne 
+| --- | --- | --- 
+| Czas budowy [ms] |  0.9965896606445312  |  248.96955490112305
+| Czas użycia [ms] |  0.0  |  1.0006427764892578
+| Dokładność |  **0.9519230769230769**  |  0.9423076923076923
+| Precyzja makro | **0.9370915032679739**  |  0.9249697458652683
+| Precyzja mikro | **0.9519230769230769**  |  0.9423076923076923
+| Czułość makro | **0.9566794707639779**  |  0.9496372172428511
+| Czułość mikro | **0.9519230769230769**  |  0.9423076923076923
+| F1 makro | **0.9457825044312376**  |  0.9354037267080746
+| F1 mikro | **0.9519230769230769**  |  0.9423076923076923
+| Macierz błędów | ![]( ./images/diabetes_sk.png )  |  ![]( ./images/diabetes_fuzz.png )
+
+---
+
+## Zbiór danych: drugs
+
+| Metryka | Klasyczne drzewo decyzyjne | Rozmyte drzewo decyzyjne 
+| --- | --- | --- 
+| Czas budowy [ms] |  1.0008811950683594  |  1288.9668941497803
+| Czas użycia [ms] |  0.0  |  4.997491836547852
+| Dokładność |  **1.0**  |  0.975
+| Precyzja makro | **1.0**  |  0.9875
+| Precyzja mikro | **1.0**  |  0.975
+| Czułość makro | **1.0**  |  0.96
+| Czułość mikro | **1.0**  |  0.975
+| F1 makro | **1.0**  |  0.9713261648745519
+| F1 mikro | **1.0**  |  0.975
+| Macierz błędów | ![]( ./images/drugs_sk.png )  |  ![]( ./images/drugs_fuzz.png )
+
+---
+
+## Zbiór danych: wine
+
+| Metryka | Klasyczne drzewo decyzyjne | Rozmyte drzewo decyzyjne 
+| --- | --- | --- 
+| Czas budowy [ms] |  6.994962692260742  |  185129.49752807617
+| Czas użycia [ms] |  0.0  |  36.03386878967285
+| Dokładność |  0.721875  |  **0.73125**
+| Precyzja makro | 0.7186517913262099  |  **0.7279304785498014**
+| Precyzja mikro | 0.721875  |  **0.73125**
+| Czułość makro | 0.7205317167875114  |  **0.7296644082570625**
+| Czułość mikro | 0.721875  |  **0.73125**
+| F1 makro | 0.719240134465048  |  **0.7285353535353535**
+| F1 mikro | 0.7218749999999999  |  **0.73125**
+| Macierz błędów | ![]( ./images/wine_sk.png )  |  ![]( ./images/wine_fuzz.png )
+
+---
