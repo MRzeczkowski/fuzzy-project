@@ -163,6 +163,13 @@ Zmienna wyjściowa (na podstawie danych sensorycznych):
 * jakość ("dobra" i "zła" na podstawie wyniku >5 i <5)
 
 ## Algorytm budowania rozmytego drzewa decyzyjnego
+Rozmytość drzewa decyzyjnego oznacza kwantyfikacje przestrzeni realizowaną za pomocą zbiorów rozmytych. Oznacza to opisanie poszczególnych zmiennych/obszarów za pomocą zbiorów rozmytych np. A1, A2, A3 to zbiory rozmyte na przestrzeni wejściowej zmiennej a. Zaletą stosowania rozmytych drzew decyzyjnych to określenie stopnia przynależności elementu do danej klasy co tym samym określa stopień zaufania jaki możemy mieć jeśli chodzi o klasyfikację elementu do danej klasy.
+
+### Działanie algorytmu:
+* Bierzemy nowy element, który chcemy sklasyfikować. Transformowany jest on do stopni przynależności, które związane są z poszczególnymi krawędziami grafu(przechodzimy przez wszystkie krawędzie).
+* Następnie są formułowane ścieżki przejścia, gdzie następuje agregacja(w sensie logicznym) stopni przynależności. Przechodzimy od korzenia drzewa do węzła terminalnego ze stopniem osiągania tego węzła, który związany jest ze stopniami przynależności na poszczególnych krawędziach tej ścieżki drzewa.
+* Agregacja stopni przynależności realizowana jest za pomocą t-normy trójkątnej, polegającej na obliczaniu minimum na poszczególnych krawędziach grafu.
+* Gdy mamy więcej niż jeden węzeł terminalny dotyczący tej samej klasy należy przeprowadzić następną agregację za pomocą T-konormy wykorzystując operacje maksimum w celu określenia stopnia przynależności danego elementu do klasy.
 
 
 ## Raport
