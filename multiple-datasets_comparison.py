@@ -10,10 +10,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-def read_dataset(dataset_name, header='infer', index_col=None, delimiter = ',', labels_encoding=[], get_dummies=False):
+def read_dataset(dataset_name, header='infer', index_col=None, delimiter=',', labels_encoding=[], get_dummies=False):
     df = pd.read_csv('./datasets/' + dataset_name + '.csv',
                      header=header, index_col=index_col, delimiter=delimiter)
-    
+
     if labels_encoding:
         for label in labels_encoding:
             encoder = LabelEncoder()
@@ -24,12 +24,10 @@ def read_dataset(dataset_name, header='infer', index_col=None, delimiter = ',', 
 
     if get_dummies:
         X = pd.get_dummies(X, dtype=int)
-   
-    X = X.to_numpy()
+
     y = y.to_numpy().ravel()
 
     return (dataset_name, (X, y))
-
 
 
 data_sets = [
@@ -40,12 +38,12 @@ data_sets = [
     read_dataset('mobile_price'),
     read_dataset('gender', labels_encoding=['gender']),
     read_dataset('oil_spill'),
-    read_dataset('diabetes',delimiter = ';', labels_encoding=['gender']),
+    read_dataset('diabetes', delimiter=';', labels_encoding=['gender']),
     read_dataset('drugs', get_dummies=True, labels_encoding=['Drug']),
     read_dataset('wine', labels_encoding=['quality']),
 ]
 
-max_depth = 64
+max_depth = None
 
 
 def make_bigger_bold(a, b):
@@ -71,10 +69,17 @@ def calc_metrics(y, pred):
 
 for name, data in data_sets:
     print("## Zbiór danych:", name)
-    print()
+    print("### Statystyki zbioru")
+
+    X = data[0]
+    Y = data[1]
+
+    desc = X.describe().T
+    print(desc.to_markdown())
+    print("### Metryki klasyfikatorów")
 
     X_train, X_test, y_train, y_test = train_test_split(
-        data[0], data[1], test_size=0.2, random_state=42)
+        X, Y, test_size=0.2, random_state=42)
 
     t_start = time.time()
     clf_sk = DecisionTreeClassifier(
