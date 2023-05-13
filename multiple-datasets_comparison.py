@@ -25,8 +25,6 @@ def read_dataset(dataset_name, header='infer', index_col=None, delimiter=',', la
     if get_dummies:
         X = pd.get_dummies(X, dtype=int)
 
-    y = y.to_numpy().ravel()
-
     return (dataset_name, (X, y))
 
 
@@ -42,8 +40,6 @@ data_sets = [
     read_dataset('drugs', get_dummies=True, labels_encoding=['Drug']),
     read_dataset('wine', labels_encoding=['quality']),
 ]
-
-max_depth = None
 
 
 def make_bigger_bold(a, b):
@@ -72,18 +68,18 @@ for name, data in data_sets:
     print("### Statystyki zbioru")
 
     X = data[0]
-    Y = data[1]
 
     desc = X.describe().T
     print(desc.to_markdown())
     print("### Metryki klasyfikatorów")
 
-    X_train, X_test, y_train, y_test = train_test_split(
-        X, Y, test_size=0.2, random_state=42)
+    X = X.to_numpy()
+    y = data[1].to_numpy().ravel()
+
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
     t_start = time.time()
-    clf_sk = DecisionTreeClassifier(
-        max_depth=max_depth).fit(X_train, y_train)
+    clf_sk = DecisionTreeClassifier().fit(X_train, y_train)
     t_end = time.time()
     t_time_ms_sk = (t_end - t_start) * 1000
 
@@ -110,8 +106,7 @@ for name, data in data_sets:
                              for row in cm_sk])
 
     t_start = time.time()
-    clf_fuzz = FuzzyDecisionTreeClassifier(
-        max_depth=max_depth).fit(X_train, y_train)
+    clf_fuzz = FuzzyDecisionTreeClassifier().fit(X_train, y_train)
     t_end = time.time()
     t_time_ms_fuzz = (t_end - t_start) * 1000
 
