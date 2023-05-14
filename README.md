@@ -173,7 +173,29 @@ Rozmytość drzewa decyzyjnego oznacza kwantyfikacje przestrzeni realizowaną za
 
 
 ## Raport
-Poniższy Raport zawiera dla każdego zbioru danych informacje o tym jak długo trwało budowanie drzew, ich użycie, dokładność klasyfikacji na zbiorze testującym oraz macież błędów która może zostać użyta do dalszej analizy.
+Poniższy Raport zawiera dla każdego zbioru danych podstawowe informacje statystyczne dotyczące zmiennych niezależnych i szereg metryk klasyfikatorów.
+
+Statystyki zmiennych niezależnych:
+* count - ilość wystąpień nierównych null lub NA
+* mean - wartość średnia
+* std - odchylenie standardowe
+* min - wartość minimalna
+* 25% - 25 percentyl
+* 50% - 50 percentyl, mediania
+* 75% - 75 percentyl
+* max - wartość maksymalna
+
+Metryki klasyfikatorów:
+* Czas budowy [ms] - czas budowania (trenowania) drzewa w milisekundach
+* Czas użycia [ms] - czas wykorzystania drzewa do klasyfikacji zbioru testowego
+* Dokładność - proporcja poprawnie sklasyfikowanych próbek do całkowitej liczby próbek. Wyrażana jest jako liczba poprawnych predykcji podzielona przez całkowitą liczbę próbek. Wzór: (tp + tn) / (tp + tn + fp + fn).
+* Precyzja - mówi nam, jak wiele z pozytywnych predykcji było poprawnych. Obliczana jest jako liczba prawdziwie pozytywnych predykcji podzielona przez sumę prawdziwie pozytywnych i fałszywie pozytywnych predykcji. Wzór: tp / (tp + fp)
+* Czułość - mówi nam, jak wiele pozytywnych przypadków zostało wykrytych przez klasyfikator. Obliczana jest jako liczba prawdziwie pozytywnych predykcji podzielona przez sumę prawdziwie pozytywnych i fałszywie negatywnych predykcji. Wzór: tp / (tp + fn)
+* F1 - jest to średnia harmoniczna między precyzją i czułością. Wzór: 2 * (precyzja * czułość) / (precyzja + czułość)
+
+Metryki Precyzja, Czułość i F1 zostały dodatkowo podzielone na typy makro i mikro.
+Metryki typu mikro sumują wyniki dla wszystkich klas, a następnie obliczają miarę dla całego zestawu danych, zaś metryki typu makro obliczają miarę dla każdej klasy osobno i następnie obliczają średnią z tych miar.
+Warto zauważyć, że różnica między metrykami typu mikro i makro wynika z tego, że metryki typu mikro uwzględniają wagę dla każdej próbki, podczas gdy metryki typu makro traktują każdą klasę równie ważną. W przypadku nierównoważonych klas, metryki typu mikro będą skupiać się bardziej na większej klasie, podczas gdy metryki typu makro będą traktować każdą klasę równie ważną.
 
 ## Zbiór danych: animals
 ### Statystyki zbioru
@@ -547,3 +569,9 @@ Poniższy Raport zawiera dla każdego zbioru danych informacje o tym jak długo 
 ---
 
 ## Podsumowanie
+
+Dla większości testowanych zbiorów Dokładność obydwu klasyfikatorów była zbliżona, ale w przypadku dwóch zbiorów (heart_attack i mobile_price) była ona większa dla rozmytego drzewa decyzyjnego. Obydwa te zbiory charakteryzują się obecnością zarówno zmiennych niezależnych ilościowych (ciągłych i dyskretnych) oraz jakościowych (dychotomicznych i porządkowych). Zdaje się, że w przypadku zbiorów danych o takiej charakterystyce rozmyte drzewa decyzyjne mogą być lepszym klasyfikatorem. Gdy zbiory nie miały takiej charakterystyki Dokładność była zbliżona, na przykład zbiory animals (tylko jakościowe), gender (głównie dychotomiczne) i oil_spill (praktycznie tylko ilościowe). W celu lepszego zidentyfikowania charakterystyk zbiorów, dla których rozmyte drzewa decyzyjne dają lepsze wyniki, należałoby przeprowadzić dokładną analizę statystyczną wyżej wymienionych zbiorów danych - być może istotny jest rozkład zmiennych niezależnych.
+
+Przy wykorzystaniu biblioteki fuzzy_tree jest widoczna wyraźna różnica w czasie budowania i wykorzystania drzewa rozmytego, w porównaniu z klasycznym drzewem decyzyjnym - czas może być większy nawet o pięć rzędów wielkości.
+
+Podsumowując wybór klasycznego lub rozmytego drzewa decyzyjnego powinien być podyktowany znajomością charakterystyki zbioru danych i zdaje się, że w przypadku obecności zarówno ilościowych jak i jakościowych zmiennych niezależnych rozmyte drzewo decyzyjne może dawać lepsze rezultaty.
