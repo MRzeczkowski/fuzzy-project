@@ -173,7 +173,7 @@ Rozmytość drzewa decyzyjnego oznacza kwantyfikacje przestrzeni realizowaną za
 
 
 ## Raport
-Raport zawiera dla każdego zbioru danych podstawowe informacje statystyczne dotyczące zmiennych niezależnych i szereg metryk klasyfikatorów.
+Raport zawiera dla każdego zbioru danych podstawowe informacje statystyczne dotyczące zmiennych niezależnych i szereg metryk klasyfikatorów. Warto wspomnieć, że głębokość drzew nie była ograniczona i obydwa algorytmy miały w tym zakresie pełną swobodę. Poziom rozmycia wykorzystany przez rozmyte drzewo decyzyjne był na poziomie 0,8.
 
 ### Statystyki zmiennych niezależnych:
 * count - ilość wystąpień nierównych null lub NA
