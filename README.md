@@ -173,9 +173,9 @@ Rozmytość drzewa decyzyjnego oznacza kwantyfikacje przestrzeni realizowaną za
 
 
 ## Raport
-Poniższy Raport zawiera dla każdego zbioru danych podstawowe informacje statystyczne dotyczące zmiennych niezależnych i szereg metryk klasyfikatorów.
+Raport zawiera dla każdego zbioru danych podstawowe informacje statystyczne dotyczące zmiennych niezależnych i szereg metryk klasyfikatorów.
 
-Statystyki zmiennych niezależnych:
+### Statystyki zmiennych niezależnych:
 * count - ilość wystąpień nierównych null lub NA
 * mean - wartość średnia
 * std - odchylenie standardowe
@@ -185,13 +185,15 @@ Statystyki zmiennych niezależnych:
 * 75% - 75 percentyl
 * max - wartość maksymalna
 
-Metryki klasyfikatorów:
+Powyższe statystyki zostały obliczone za pomocą biblioteki Pandas, używając metody [describe](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html).
+
+### Metryki klasyfikatorów:
 * Czas budowy [ms] - czas budowania (trenowania) drzewa w milisekundach
 * Czas użycia [ms] - czas wykorzystania drzewa do klasyfikacji zbioru testowego
-* Dokładność - proporcja poprawnie sklasyfikowanych próbek do całkowitej liczby próbek. Wyrażana jest jako liczba poprawnych predykcji podzielona przez całkowitą liczbę próbek. Wzór: (tp + tn) / (tp + tn + fp + fn).
-* Precyzja - mówi nam, jak wiele z pozytywnych predykcji było poprawnych. Obliczana jest jako liczba prawdziwie pozytywnych predykcji podzielona przez sumę prawdziwie pozytywnych i fałszywie pozytywnych predykcji. Wzór: tp / (tp + fp)
-* Czułość - mówi nam, jak wiele pozytywnych przypadków zostało wykrytych przez klasyfikator. Obliczana jest jako liczba prawdziwie pozytywnych predykcji podzielona przez sumę prawdziwie pozytywnych i fałszywie negatywnych predykcji. Wzór: tp / (tp + fn)
-* F1 - jest to średnia harmoniczna między precyzją i czułością. Wzór: 2 * (precyzja * czułość) / (precyzja + czułość)
+* Dokładność - proporcja poprawnie sklasyfikowanych próbek do całkowitej liczby próbek. Wyrażana jest jako liczba poprawnych predykcji podzielona przez całkowitą liczbę próbek. Funkcja z biblioteki scikit-learn: [sklearn.metrics.accuracy_score](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html). Wzór: `(tp + tn) / (tp + tn + fp + fn)`
+* Precyzja - mówi nam, jak wiele z pozytywnych predykcji było poprawnych. Obliczana jest jako liczba prawdziwie pozytywnych predykcji podzielona przez sumę prawdziwie pozytywnych i fałszywie pozytywnych predykcji. Funkcja z biblioteki scikit-learn: [sklearn.metrics.precision_score](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html). Wzór: `tp / (tp + fp)`
+* Czułość - mówi nam, jak wiele pozytywnych przypadków zostało wykrytych przez klasyfikator. Obliczana jest jako liczba prawdziwie pozytywnych predykcji podzielona przez sumę prawdziwie pozytywnych i fałszywie negatywnych predykcji. Funkcja z biblioteki scikit-learn: [sklearn.metrics.recall_score](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html). Wzór: `tp / (tp + fn)`
+* F1 - jest to średnia harmoniczna między precyzją i czułością. Funkcja z biblioteki scikit-learn: [sklearn.metrics.f1_score](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html). Wzór: `2 * (precyzja * czułość) / (precyzja + czułość)`
 
 Metryki Precyzja, Czułość i F1 zostały dodatkowo podzielone na typy makro i mikro.
 Metryki typu mikro sumują wyniki dla wszystkich klas, a następnie obliczają miarę dla całego zestawu danych, zaś metryki typu makro obliczają miarę dla każdej klasy osobno i następnie obliczają średnią z tych miar.
